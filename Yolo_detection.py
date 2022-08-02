@@ -10,11 +10,11 @@ with open("coco.names", "r") as f:
 layer_names = net.getLayerNames()
 
 output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
-colors = np.random.uniform(0, 255, size=(len(classes), 3))
+colors = np.random.uniform(255, 0, size=(len(classes), 3))
 
 #loading image
-img = cv2.imread("room_ser.jpg")
-img = cv2.resize(img, None, fx=0.3, fy=0.3)
+img = cv2.imread("Cadeira.jpg")
+img = cv2.resize(img, None, fx=1.1, fy=1.1)
 height, width, channels = img.shape
 
 #detecting objets 
@@ -67,5 +67,8 @@ for i in range(len(boxes)):
 
 
 cv2.imshow("Image", img)
+
+cv2.imwrite("Cadeira YOLO.jpg", img)
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
